@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check symmetrical string</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Nhập chuỗi: </td>
+        <td><input type="text" id="str" /> </td>
+        <td><button type="button" onclick="check()">Kiểm Tra</button> </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td colspan="2" id="result"></td>
+    </tr>
+</table>
+    <script>
+        function isPalindrome1(str) {
+            let start=0;
+            let end= str.length-1;
+            while(start < end){
+                if(str[start]!=str[end]){
+                    return false;
+                }
+                start++;
+                end--;
+            }
+            return true;
+        }
+        function isPalindrome2(str,start,end){
+            if(start < end){
+                if(str[start] != str[end] ){
+                    return false;
+                }else{
+                    return isPalindrome2(str,start+1,end-1);
+                }
+            }else{
+                return true;
+            }
+        }
+
+        function check() {
+            let str=document.getElementById("str").value.trim();
+            if(isPalindrome1(str,0,str.length-1)){
+                document.getElementById("result").textContent= "Chuỗi Đối xứng!"
+            }else{
+                document.getElementById("result").textContent="Chuỗi không Đối Xứng!";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
